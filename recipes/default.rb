@@ -8,7 +8,7 @@
 #
 
 case node["platform_family"] 
-  when "ubuntu"
+  when "debian"
     execute "update packages cache" do
       command "apt-get update"
   end
