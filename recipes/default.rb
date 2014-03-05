@@ -7,9 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
-case node["platform_family"] == "ubuntu"
-  execute "update packages cache" do
-    command "apt-get update"
+case node["platform_family"] 
+  when "ubuntu"
+    execute "update packages cache" do
+      command "apt-get update"
   end
 
 include_recipe "mysql::server"
