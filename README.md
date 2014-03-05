@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jollyrojer/mysql-component.png?branch=master)](https://travis-ci.org/jollyrojer/mysql-component)
+
 MySQL Cookbook
 ==============
 Installs and configure MySQL-server.
