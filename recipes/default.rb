@@ -12,6 +12,7 @@ case node["platform_family"]
     execute "update packages cache" do
       command "apt-get update"
   end
+end
 
 include_recipe "mysql::server"
 
@@ -25,3 +26,4 @@ case node["platform_family"]
       action :stop
     end
   end
+
