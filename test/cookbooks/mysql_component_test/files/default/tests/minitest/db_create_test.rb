@@ -5,7 +5,7 @@ def is_db_exists?(host, user, passwd, port, content)
   begin
     con = Mysql.new(host, user, passwd, '', port)
     db = con.list_dbs
-    if db.include?("#{node['mysql-component']['db_name']}")
+    if db.include?("#{node['mysql_component']['schema']['dbname']}")
       return true
     else
       return false
@@ -15,8 +15,8 @@ def is_db_exists?(host, user, passwd, port, content)
   end
 end
 
-describe_recipe 'mysql_component::db_create' do
+describe_recipe 'mysql_component::db_manage' do
   it "creates database" do
-    assert is_db_exists?("localhost","root","#{node['mysql']['server_root_password']}",node['mysql']['port'],"#{node['mysql-component']['db_name']}") == true, "Expected database #{node['mysql-component']['db_name']} exists"
+    assert is_db_exists?("localhost","root","#{node['mysql']['server_root_password']}",node['mysql']['port'],"#{node['mysql_component']['schema']['dbname']}") == true, "Expected database #{node['mysql_component']['schema']['dbname']} exists"
   end
 end

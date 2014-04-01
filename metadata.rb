@@ -1,5 +1,5 @@
-name "mysql-component"
-version "0.1.0"
+name "mysql_component"
+version "0.2.0"
 
 depends "build-essential", "1.4.2"
 depends "database", "1.5.3"

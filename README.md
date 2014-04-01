@@ -12,7 +12,8 @@ Platform
 
 Cookbooks
 ---------
-Requires Opscode's build-essential.
-Requires Opscode's  database.
-Requires Opscode's mysql.
-Requires Opscode's openssl.
+Requires Opscode's cookbooks:
+- build-essential '1.4.2'
+- database '1.5.3'
+- mysql '3.0.13'
+- openssl '1.1.1'

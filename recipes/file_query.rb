@@ -1,14 +1,15 @@
 #
-# Cookbook Name:: mysql-component 
-# Recipe:: mysql query
+# Cookbook Name:: mysql_component 
+# Recipe::file_query
 #
-# Copyright 2013, Cometera
+# Copyright 2014, Qubell
 #
 # All rights reserved - Do Not Redistribute
 #
+
 include_recipe "database::mysql"
 
-sql_f = node['mysql-component']['sql_url']
+sql_f = node[:mysql_component][:sql_url]
 sql_f.each_index do |i|
   sql_file = Chef::Config[:file_cache_path] + "/query#{i}.sql"
   remote_file sql_file do
@@ -18,9 +19,9 @@ sql_f.each_index do |i|
   end
 
   mysql_database "run #{sql_file}" do
-    connection ({:host => 'localhost', :username => 'root', :password => node['mysql']['server_root_password']})
+    connection node[:mysql_component][:schema]
     sql { ::File.open(sql_file).read }
-    database_name node['mysql-component']['db_name']
+    database_name node[:mysql_component][:schema][:dbname]
     action :query
   end
 end

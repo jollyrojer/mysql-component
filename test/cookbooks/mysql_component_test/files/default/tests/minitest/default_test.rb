@@ -1,6 +1,6 @@
 require 'minitest/spec'
 
-describe_recipe 'mysql-component::default' do
+describe_recipe 'mysql_component::default' do
   it "install mysql-server package" do
     package("mysql-server").must_be_installed
   end
@@ -38,7 +38,7 @@ def is_port_open?(ip, port)
   return false
 end
 
-describe_recipe 'mysql-component::default' do
+describe_recipe 'mysql_component::default' do
   it "mysql is listening" do
     assert is_port_open?("#{node["ipaddress"]}", "#{node["mysql"]["port"]}") == true, "Expected port #{node["mysql"]["port"]} is open"
   end

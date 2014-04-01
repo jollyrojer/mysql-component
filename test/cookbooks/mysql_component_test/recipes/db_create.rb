@@ -1,4 +1,3 @@
-include_recipe "mysql-component"
-include_recipe "mysql-component::db_create"
-include_recipe "mysql::ruby"
+include_recipe "mysql_component"
+include_recipe "mysql_component::db_manage"
 include_recipe "minitest-handler"

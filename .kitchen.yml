@@ -59,23 +59,33 @@ suites:
     run_list:
       - recipe[minitest-handler]
       - recipe[mysql_component_test]
-    attributes: {mysql: { port: 3306, server_root_password: "uR1zaebah0Qu", server_repl_password: "uR1zaebah0Qu", server_debian_password: "uR1zaebah0Qu"}}
-  - name: db_create 
+    attributes: {
+                  mysql: { 
+                    port: 3306, 
+                    server_root_password: "uR1zaebah0Qu", 
+                    server_repl_password: "uR1zaebah0Qu", 
+                    server_debian_password: "uR1zaebah0Qu"
+                  }
+                }
+  - name: create-db 
     run_list:
       - recipe[minitest-handler]
       - recipe[mysql_component_test::db_create]
     attributes: {
                   mysql: {
-                    port: 3306, 
+                    port: 3306,
                     server_root_password: "uR1zaebah0Qu", 
                     server_repl_password: "uR1zaebah0Qu",
                     server_debian_password: "uR1zaebah0Qu"
                   },
-                  mysql-component: {
-                    db_name: "petclinic"
+                  mysql_component: {
+                    schema: {
+                      dbname: "petclinic",
+                      db_action: "create"
+                    }
                   }
                 }
-  - name: user_create 
+  - name: create-user 
     run_list:
       - recipe[minitest-handler]
       - recipe[mysql_component_test::user_create]
@@ -86,17 +96,21 @@ suites:
                     server_repl_password: "uR1zaebah0Qu",
                     server_debian_password: "uR1zaebah0Qu"
                   },
-                  mysql-component: {
-                    db_name: "petclinic",
-                    db_pass: "petclinic", 
-                    db_user: "petclinic",
-                    host: ["192.168.1.1"]
-                  }
+                  mysql_component: {
+                    schema: {
+                      dbname: "petclinic",
+                      password: "petclinic", 
+                      username: "petclinic",
+                      privileges: "all",
+                      action: "grant"
+                    },
+                    hosts: ["192.168.1.1"]
+                  },
                 }
-  - name: sql_query 
+  - name: file-query
     run_list:
       - recipe[minitest-handler]
-      - recipe[mysql_component_test::sql_query]
+      - recipe[mysql_component_test::file_query]
     attributes: {
                   mysql: {
                     port: 3306,
@@ -104,11 +118,13 @@ suites:
                     server_repl_password: "uR1zaebah0Qu",
                     server_debian_password: "uR1zaebah0Qu"
                   },
-                  mysql-component: {
-                    db_name: "petclinic",
-                    db_pass: "petclinic",
-                    db_user: "petclinic",
-                    host: ["192.168.1.1"],
+                  mysql_component: {
+                    schema: {
+                      dbname: "petclinic",
+                      password: "petclinic",
+                      username: "petclinic"
+                    },
+                    hosts: ["192.168.1.1"],
                     sql_url: ["https://raw.github.com/qubell-bazaar/component-petclinic/master/sql/petclinic-mysql-schema.sql", "https://raw.github.com/qubell-bazaar/component-petclinic/master/sql/petclinic-mysql-dataload.sql"]
                   }
                 }
