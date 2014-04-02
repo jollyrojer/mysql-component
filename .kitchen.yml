@@ -101,7 +101,7 @@ suites:
                       dbname: "petclinic",
                       password: "petclinic", 
                       username: "petclinic",
-                      privileges: "all",
+                      privileges: ["all"],
                       action: "grant"
                     },
                     hosts: ["192.168.1.1"]
