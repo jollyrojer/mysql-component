@@ -22,7 +22,7 @@ end
 
 describe_recipe 'mysql_component::sql_query' do
   it "populates database" do
-    assert is_db_content_exists?("localhost","root",node['mysql']['server_root_password'],"petclinic",node['mysql']['port'],"owners") == true, "Expected db has tables and records"
+    assert is_db_content_exists?("localhost",node['mysql_component']['schema']['username'],node['mysql_component']['schema']['password'],node['mysql_component']['schema']['dbname'],node['mysql']['port'],"owners") == true, "Expected db has tables and records"
   end
 end
 
