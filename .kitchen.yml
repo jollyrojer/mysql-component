@@ -131,6 +131,6 @@ suites:
                       action: "grant"
                     },
                     hosts: ["192.168.1.1"],
-                    sql_url: ["https://raw.github.com/qubell-bazaar/component-petclinic/master/sql/petclinic-mysql-schema.sql", "https://raw.github.com/qubell-bazaar/component-petclinic/master/sql/petclinic-mysql-dataload.sql"]
+                    sql_url: ["https://raw.github.com/qubell-bazaar/component-petclinic/master/sql/petclinic-mysql-schema.sql", "https://raw.githubusercontent.com/jollyrojer/component-petclinic/master/sql/petclinic-mysql-dataload.sql"]
                   }
                 }
