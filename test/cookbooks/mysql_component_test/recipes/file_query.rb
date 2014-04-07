@@ -7,4 +7,4 @@ include_recipe "mysql_component::user_manage"
 include_recipe "mysql_component::file_query"
 include_recipe "minitest-handler"
 
-execute "sleep 3"  # Wait for MySQL startup
+execute "sleep 10"  # Wait for MySQL startup

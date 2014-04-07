@@ -17,7 +17,7 @@ sql_f.each_index do |i|
     mode "0644"
     action :create
   end
-
+  
   mysql_database "run #{sql_file}" do
     connection node[:mysql_component][:schema]
     sql { ::File.open(sql_file).read }

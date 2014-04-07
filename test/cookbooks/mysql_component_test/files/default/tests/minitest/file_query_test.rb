@@ -20,8 +20,8 @@ def is_db_content_exists?(host, user, passwd, db, port, tablename)
   end
 end
 
-describe_recipe 'mysql_component::sql_query' do
-  it "populates database" do
+describe_recipe 'mysql_component::file_query' do
+  it "populates database from sql files" do
     assert is_db_content_exists?("localhost",node['mysql_component']['schema']['username'],node['mysql_component']['schema']['password'],node['mysql_component']['schema']['dbname'],node['mysql']['port'],"owners") == true, "Expected db has tables and records"
   end
 end
