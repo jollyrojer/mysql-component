@@ -113,6 +113,10 @@ suites:
       - recipe[mysql_component_test::file_query]
     attributes: {
                   mysql: {
+                    tunable: {
+                      log_error: "/var/log/mysql/error.log",
+                      log_warnings: true
+                    },
                     port: 3306,
                     server_root_password: "uR1zaebah0Qu", 
                     server_repl_password: "uR1zaebah0Qu",

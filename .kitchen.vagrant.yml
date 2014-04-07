@@ -82,6 +82,10 @@ suites:
       - recipe[mysql_component_test::file_query]
     attributes: {
                   mysql: {
+                    tunable: {
+                      log_error: "/var/log/mysql/error.log",
+                      log_warnings: true
+                    },
                     port: 3306,
                     server_root_password: "uR1zaebah0Qu", 
                     server_repl_password: "uR1zaebah0Qu",
@@ -91,7 +95,9 @@ suites:
                     schema: {
                       dbname: "petclinic",
                       password: "petclinic",
-                      username: "petclinic"
+                      username: "petclinic",
+                      privileges: ["all"],
+                      action: "grant"
                     },
                     hosts: ["192.168.1.1"],
                     sql_url: ["https://raw.github.com/qubell-bazaar/component-petclinic/master/sql/petclinic-mysql-schema.sql", "https://raw.github.com/qubell-bazaar/component-petclinic/master/sql/petclinic-mysql-dataload.sql"]
