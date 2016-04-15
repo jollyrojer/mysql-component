@@ -13,3 +13,6 @@ default[:mysql_component][:schema][:dbname] = nil
 
 default[:mysql_component][:sql_url] = nil
 default[:mysql_component][:hosts] = ["localhost"]
+
+normal[:mysql][:bind_address] = '0.0.0.0'
+
